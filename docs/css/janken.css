@@ -1,0 +1,284 @@
+
+
+
+
+/* 全体の基本設定　黒背景＋白文字＋太字 */
+
+html,body{
+  height: 100vh;
+  /* overflow-y: auto; */
+  background-color: #000;
+  color: #fff;
+  font-family: "Meiryo",sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+   display: flex;
+   flex-direction: column;
+   /* ↑ここどうするか後で考える */
+}
+
+main{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* height: calc(100vh - 120px); */
+  /* overflow: hidden; */
+}
+
+/* ラップ設定 */
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+
+/* タイトルとロゴ */
+.title_section{
+  text-align: center;
+  /* height: 20px; */
+  padding: 20px;
+}
+.logo{
+  width: 300px;
+  height: auto;
+  margin-top: 20px;
+  /* margin-bottom: 10px; */
+}
+
+/* 横スクロールメッセージ */
+
+.scroll_message{
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap; 
+  overflow: hidden;
+  animation: scroll 10s linear infinite;
+  color: gold;
+  font-size: 1.0em;
+  /* padding: 10px; */
+  /* border-top: 1px solid #444; */
+  /* border-bottom: 1px solid #444; */
+  /* width: 800px; */
+  margin: 10px auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* スクロールするトラック親 */
+.scroll_track {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  0%   { transform: translateX(30%); }
+  100% { transform: translateX(-30%); }
+}
+.scroll_text {
+  /* display: iine-block; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  min-width: 100%;
+  /* padding-right: 100px; 少し余白をつけてループ感を出す */
+}
+
+
+
+/* @keyframes scroll{
+  0%{transform: translateX(100%);}
+  100%{transform: translateX(-100%);}
+} */
+
+/* プレイヤー配置 */
+.players{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 20px;
+}
+.player{
+  width: 200px;
+  text-align: center;
+  width: 30%;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.player h2{
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  color: gold;
+}
+
+#user .buttons,
+#user #yourcoins{
+  margin-top: 10px;
+}
+
+.enemy_image{
+  display: block;
+  width: auto;
+  height: 120px;
+  object-fit: cover;
+  margin: 0 auto 10px auto;
+  /* gap: px; */
+  position: relative;
+  z-index: 1;
+
+}
+.hand{
+  margin-top: 5px;
+  /* margin-bottom: 10px; */
+  font-size: 1.1em;
+  color: gold;
+}
+.hand_image {
+  width: 50px;         /* 画像の横幅を固定 */
+  height: auto;         /* 高さは自動調整（縦横比を保つ） */
+  display: block;       /* 中央揃えしやすくする */
+  margin: 10px auto;       /* 中央揃え */
+  object-fit: cover;
+  display: block;
+}
+
+/* ボタン配置 */
+.buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.buttons button{
+  margin: 8px;
+  padding: 10px 20px;
+  width: 160px;
+  font-family: Meiryo;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #222;
+  color: white;
+  border:none;
+  border-radius: 8px;
+  cursor:pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.buttons button:hover{
+  background-color: #444;
+  transform: scale(1.1);
+}
+
+/* コイン表示 */
+#yourcoins,#jackcoins,#anncoins{
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: white;
+  display: block;
+}
+
+/* 各種メッセージ表示 */
+#result,#double,#final{
+  text-align: center;
+  margin: 8px 0;
+  font-size: 1.2em;
+  color: gold;
+
+}
+
+@keyframes popMessage {
+  0%   { font-size: 1em; }
+  50%  { font-size: 2em; }
+  100% { font-size: 1em; }
+}
+
+.coin_message{
+  color:gold;
+  font-size: 1em;
+  animation: popMessage 0.6s ease-out;
+}
+
+
+
+
+
+/* スコアボード */
+#scoreBoard{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  font-size: 0.9em;
+  gap: 10px;
+  background-color: #111;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 10px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255,215,0,0.2);
+}
+#scoreBoard h2{
+  color: gold;
+  margin-bottom: 10px;
+  grid-column: span 3;
+}
+#scoreBoard p{
+  margin: 5px;
+}
+
+/* ルール説明 */
+.rules{
+  background-color: #111;
+  color: #ccc;
+  padding: 20px;
+  font-size: 0.8em;
+  max-height: 15vh;
+  text-align: center;
+  border-top: 1px solid #333;
+  overflow-y: auto;
+}
+
+.rules h2{
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.musicbutton{
+  margin-top: 5px; 
+  display: flex;
+  justify-content: center;
+}
+
+/* * {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button {
+  width: 200px;
+  height: 70px;
+} */
+
+/* main {
+  max-width: 480px;
+  height: 100vh;
+  margin: 0 auto;
+} */
+
+/* section {
+  height: calc(80vh/10);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */

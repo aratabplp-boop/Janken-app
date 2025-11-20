@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2連勝総どりジャンケン
+
+  </title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet" />
+  <link rel="stylesheet" href="css/janken.css">
+</head>
+
+<body>
+
+<div class="container">
+<main>
+    <!--タイトルとロゴ  -->
+
+    <header class="title_section">
+        <img src="images/Janken-logo.png" alt="" class="logo">
+        <!-- <h1>じゃんけんコインバトル</h1> -->
+    </header>
+
+<!-- <H1>Junken Royale</H1> -->
+<!-- メッセージ -->
+
+
+<div class="scroll_message">
+  <div class="scroll_track">
+ <span class="scroll_text">ラスベガスの夜。コインを30枚集めて優勝！！</span>
+  </div>
+ 
+</div>
+
+<section class="players">
+ <div class="player" id="user">
+  <h2>あなた</h2>
+ <div class="buttons">
+      <button id="Gbutton">グー</button>
+      <button id="Cbutton">チョキ</button>
+      <button id="Pbutton">パー</button>
+ </div>
+ <div id="yourcoins">コイン：0枚</div>
+
+ </div>
+
+
+
+<div class="player" id="jack">
+    <h2>Jack</h2>
+    <img src="./images/Jackimg.png" alt="Jackの写真" class="enemy_image">
+    <div class="hand" id="JackHand">パー</div>
+    <img class ="hand_image" src="./images/Pimg.png" alt="Jackの手">
+    <div id="jackcoins">コイン：0枚</div>
+</div>
+
+<div class="player" id="ann">
+    <h2>Ann</h2>
+    <img src="./images/Annimg.png" alt="Annの写真" class="enemy_image">
+    <div class="hand" id="AnnHand">グー</div>
+    <img class="hand_image" src="./images/Gooimg.png" alt="Annの手">
+    <div id="anncoins">コイン：0枚</div>
+</div>
+
+
+</section>
+
+<!-- 勝敗・優勝メッセージ -->
+<section id="result">
+    <p class="coin_message">勝敗は？</p></section>
+<section id="double"><p>連勝したら</p></section>
+
+
+
+
+<!-- スコアボード（カード風） -->
+ <section id="scoreBoard">
+ <h2>スコアボード</h2>
+ <p id="userWins">あなたの勝利数: 0</p>
+  <p id="jackWins">Jackの勝利数: 0</p>
+  <p id="annWins">Annの勝利数: 0</p>
+  <p id="userChamp">あなたの優勝回数: 0</p>
+  <p id="jackChamp">Jackの優勝回数: 0</p>
+  <p id="annChamp">Annの優勝回数: 0</p>
+
+</section>
+
+<section id="final"><p>優勝者に祝福を</p></section>
+
+
+
+</main>
+
+
+<footer class="rules">
+<h2>ルール</h2>
+<p>コンピューター2名(JackとAnn)と対戦します</p>
+<p>2人に勝つとコインが3枚もらえます</p>
+<p>負け、あいこ、2人で勝った場合はもらえません</p>
+<p>２連勝すると、他人のコインを全て奪うことができます</p>
+<p>コインが一番早く30枚貯まった人が勝ちです</p>
+
+</footer>
+
+<div class="musicbutton">
+<audio id="bgm" src="./sound/As_you_wish.mp3" loop></audio>
+<button onclick="toggleBGM()">BGM再生 / 停止</button>
+
+</div>
+
+<audio id="coinSound" src="./sound/レジ.mp3"></audio>
+
+
+</div>
+
+<!-- <section class="button_section">
+    <h2>あなたは何を選びますか</h2>
+      <button id="Gbutton">グー</button>
+      <button id="Cbutton">チョキ</button>
+      <button id="Pbutton">パー</button>
+</section> -->
+<!-- 
+<section class="computer1_section" id="Jack">
+     <p>Jackは何を出す</p>
+</section>
+
+<section class="computer2_section" id="Ann">
+      Annは<p>Annは何を出す？？</p>
+</section>
+
+<section class="result_section" id="result">
+    <p>勝敗は？</p>
+</section>
+
+
+<section class="Numbercoinsyours" id="yourcoins">
+<p>あなたのコインの枚数</p>
+
+</section>
+
+<section class="Numbercoinsjack" id="jackcoins">
+    <p>Jackのコインの枚数</p>
+
+</section>
+
+
+<section class="Numbercoinsann" id="anncoins">
+    <p>Annのコインの枚数</p>
+</section>
+
+<section class="doblewin" id = "double">
+    <p>2連勝したらここにお祝いコメントが出るよ</p>
+    リーチや2連勝でテキスト表示
+</section>
+
+    <p>優勝者に祝福コメント</p>
+
+</section> --> 
+
+<!-- <section class="score_section" id="scoreBoard">
+  <h2>スコアボード</h2>
+  <p id="userWins">あなたの勝利数: 0</p>
+  <p id="jackWins">Jackの勝利数: 0</p>
+  <p id="annWins">Annの勝利数: 0</p>
+  <p id="userChamp">あなたの優勝回数: 0</p>
+  <p id="jackChamp">Jackの優勝回数: 0</p>
+  <p id="annChamp">Annの優勝回数: 0</p>
+</section> -->
+
+
+
+
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+
+// 最初にコインの箱、とconstで結果の辞書を作っておく。
+// 乱数に対する基本的な設定。
+
+const coins ={
+    user: 0,
+    Jack:0,
+    Ann:0
+};
+
+const wins = {
+  user: 0,
+  Jack: 0,
+  Ann: 0
+};
+
+const champs = {
+  user: 0,
+  Jack: 0,
+  Ann: 0
+};
+
+
+const resultMap = {
+    // グー　０から８
+  0: { jack: "グー", ann: "グー", winner: null },
+  1: { jack: "グー", ann: "チョキ", winner: null },
+  2: { jack: "グー", ann: "パー", winner: "Ann" },
+  3: { jack: "チョキ", ann: "グー", winner: null },
+  4: { jack: "チョキ", ann: "チョキ", winner: "user"},
+  5: { jack: "チョキ", ann: "パー", winner: null },
+  6: { jack: "パー", ann: "グー", winner: "Jack" },
+  7: { jack: "パー", ann: "チョキ", winner: null },
+  8: { jack: "パー", ann: "パー", winner: null },
+
+   // あなたが「チョキ」のとき（10〜18）
+  10: { jack: "グー", ann: "グー", winner: null },
+  11: { jack: "グー", ann: "チョキ", winner: "Jack" },
+  12: { jack: "グー", ann: "パー", winner: null },
+  13: { jack: "チョキ", ann: "グー", winner: "Ann" },
+  14: { jack: "チョキ", ann: "チョキ", winner: null },
+  15: { jack: "チョキ", ann: "パー", winner: null },
+  16: { jack: "パー", ann: "グー", winner: null},
+  17: { jack: "パー", ann: "チョキ", winner: null },
+  18: { jack: "パー", ann: "パー", winner: "user"  },
+
+  // あなたが「パー」のとき（20〜28）
+  20: { jack: "グー", ann: "グー", winner: "user" },
+  21: { jack: "グー", ann: "チョキ", winner: null },
+  22: { jack: "グー", ann: "パー", winner: null },
+  23: { jack: "チョキ", ann: "グー", winner: null},
+  24: { jack: "チョキ", ann: "チョキ", winner: null },
+  25: { jack: "チョキ", ann: "パー", winner: "Jack"},
+  26: { jack: "パー", ann: "グー", winner: null },
+  27: { jack: "パー", ann: "チョキ", winner: "Ann" },
+  28: { jack: "パー", ann: "パー", winner: null }
+
+};
+
+const streak = {
+    lastWinner: null,
+    count: 0
+};
+
+function playTurn(playerHand){
+    $("#double").html(""); 
+// 連勝メッセージ毎ターン初期化
+ const random=Math.floor(Math.random()*9);
+ const base = playerHand==="グー"? 0
+              : playerHand === "チョキ" ? 10
+              :20;
+ const result = resultMap[base+random] ;
+
+  console.log(`あなたの手: ${playerHand}`);
+  console.log("乱数:", random);
+  console.log("勝敗データ:", result);
+
+$("#JackHand").text(result.jack);
+$("#AnnHand").text(result.ann);
+
+// JackとAnnの手画像に関する関数
+updateHandImage("jack", result.jack);
+updateHandImage("ann", result.ann);
+
+
+
+const resultmessage =result.winner
+  ? `${result.winner === "user" ? "あなた" : result.winner}がコインGet！`
+  : "コインなし";
+// ここ、あとでJackとAnnもいれる
+
+  console.log("勝敗メッセージ",resultmessage);
+ $("#result").html(`<p>${resultmessage}</p>`);
+
+if(result.winner){
+    coins[result.winner] +=2;
+    wins[result.winner]+=1;
+    console.log(`${result.winner}に2コイン追加→合計：$coins[result.winner]`);
+    console.log(`${result.winner} の勝利数 → ${wins[result.winner]}勝`);
+
+}
+
+$("#result").html(`<p class="coin_message">${resultmessage}</p>`);
+
+
+checkStreak(result.winner)
+
+
+updateCoinDisplay();
+
+updateWinDisplay();
+
+checkWinner();
+
+}
+
+
+function updateHandImage(playerId, handType) {
+  let filename = "";
+
+  if (handType === "グー") {
+    filename = "./images/Gooimg.png";
+  } else if (handType === "チョキ") {
+    filename = "./images/chyokiimg.png";
+  } else if (handType === "パー") {
+    filename = "./images/pimg.png";
+  }
+
+  $("#" + playerId + " .hand_image").attr("src", filename);
+}
+
+
+$("#Gbutton").on("click",function(){
+  playTurn("グー");
+});
+
+$("#Cbutton").on("click", function(){
+    playTurn("チョキ");
+});
+
+$("#Pbutton").on("click",function(){
+    playTurn("パー");
+});
+
+
+// 勝者がいないnull場合は,連勝カウントリセットして終了
+function checkStreak(currentWinner){
+$("#double").html("");
+
+    if(!currentWinner){
+    // streak.count=0;
+    // streak.lastWinner = null;
+    console.log("引き分け→連勝カウント維持")
+    return;
+}
+    console.log(`連勝チェック:前回= ${streak.lastWinner},今回= ${currentWinner}`);
+
+// 今回の勝者が前回と同じなら→連勝カウントを１増やす
+if(currentWinner === streak.lastWinner){
+    streak.count +=1;
+    console.log(`🔥 ${currentWinner} が連勝中 → カウント: ${streak.count}`);
+
+    // 2連勝達成　他人のコインを没収して加算
+if(streak.count === 2){
+    console.log(`2連勝達成→没収処理開始`)
+    const p1 = Object.keys(coins)[0];
+    const p2 = Object.keys(coins)[1];
+    const p3 = Object.keys(coins)[2];
+    console.log(`プレーヤー一覧`,p1,p2,p3)
+     
+
+    // 勝者以外の2人を抽出
+    const others = [p1,p2,p3].filter(p=>p!== currentWinner);
+    console.log(`没収対象`,others);
+    
+    // 没収するコインの枚数を記録
+    const c1 = coins[others[0]]
+    const c2 = coins[others[1]]
+    console.log(`没収枚数:${others[0]}=${c1},${others[1]}=${c2}`);
+
+    // 没収処理
+    coins[others[0]]=0;
+    coins[others[1]]=0;
+    console.log(`没収完了`);
+
+    // 勝者に没収分を加算
+    coins[currentWinner] +=c1+c2;
+    console.log(`${currentWinner}に${c1 + c2}枚加算→合計:${coins[currentWinner]}`);
+
+    // メッセージ表示
+    $("#double").html(`<p>${currentWinner==="user"?"あなた":currentWinner}が2連勝！他のコインを没収して${c1+c2}枚獲得！</p>`);
+   
+    // 状態リセット（次の勝負に備える）
+    streak.count = 0;
+    streak.lastWinner = null;
+    console.log(`連勝状態リセット`);
+}
+
+}else{
+// 勝者が前回と違う→新しく連勝カウントを開始
+streak.count =1;
+streak.lastWinner=currentWinner;
+console.log(`新しい勝者${currentWinner}→カウント開始`);
+}
+
+}
+
+// コイン数を表示
+function updateCoinDisplay(){
+$("#yourcoins").text(`あなた:${coins.user}枚`);
+$("#jackcoins").text(`Jack: ${coins.Jack}枚`);
+$("#anncoins").text(`Ann:${coins.Ann}枚`);
+}
+
+function checkWinner(){
+    const winner= Object.keys(coins).find(p =>coins[p]>=30);
+    if(winner){
+        const name = winner ==="user"?"あなた":winner;
+        $("#final").html(`<p>${name}が30枚以上達成！優勝です！</p>`);
+    
+    //優勝回数を加算
+    champs[winner] +=1;
+    
+    // 勝利数とコイン数をリセット
+    coins.user=coins.jack=coins.ann =0;
+    wins.user=wins.jack=wins.ann=0;
+
+    $("#final").html(`<p>${name}が30枚以上達成！優勝です！</p>`);
+    updateCoinDisplay();
+    updateWinDisplay();
+
+  // ✅ 優勝回数表示を更新
+    $("#userChamp").text(`あなたの優勝回数: ${champs.user}`);
+    $("#jackChamp").text(`Jackの優勝回数: ${champs.Jack}`);
+    $("#annChamp").text(`Annの優勝回数: ${champs.Ann}`);
+
+
+    }
+}
+// 勝者が出たときに勝利数加算
+
+
+function updateWinDisplay() {
+  $("#userWins").text(`あなたの勝利数: ${wins.user}`);
+  $("#jackWins").text(`Jackの勝利数: ${wins.Jack}`);
+  $("#annWins").text(`Annの勝利数: ${wins.Ann}`);
+}
+ 
+function toggleBGM() {
+  const audio = document.getElementById("bgm");
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+}
+
+
+audio.volume =0.5;
+
+
+</script>
+<!--  
+//   const randomNumber = Math.floor (Math.random()*9);
+//   console.log("乱数",randomNumber);
+
+// const result =resultMap[randomNumber];
+// console.log("勝敗データ",result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // 最初に3人でジャンケンする乱数を作る。
+// // 0→グー、1→チョキ、2→パー
+// // あなたが０で、Ｃ１とＣ２が２の場合のみあなたの勝ち
+// // あなたが
+
+// // $("#Gbutton").on("click",function(){
+// //   // ランダム数字つくる
+// //   const randomNumber = Math.floor (Math.random()*8);
+// //   console.log(randomNumber);
+
+// //   if (randomNumber=== 0)
+// //   {
+// // $("#Jack").text("グー");
+// // $("#Ann").text("グー");
+// // $("#result").text("あいこだからコインなし");
+
+// // } else if(randomNumber===1){
+// // $("#Jack").text("グー");
+// // $("#Ann").text("チョキ");
+// // $("#result").text("二人勝ちだからコインなし");
+
+// // }else if(randomNumber===2){
+// // $("#Jack").text("グー");
+// // $("#Ann").text("パー");
+// // $("#result").text("Annの勝ちだからAnnがコインGet");
+
+// // }else if(randomNumber===3){
+// // $("#Jack").text("チョキ");
+// // $("#Ann").text("グー");
+// // $("#result").text("二人勝ちだからコインなし");
+
+// // } else if(randomNumber===4){
+// // $("#Jack").text("チョキ");
+// // $("#Ann").text("チョキ");
+// // $("#result").text("あなたの勝ちだからあなたがコインGet！");
+
+// // } else if(randomNumber===5){
+// // $("#Jack").text("チョキ");
+// // $("#Ann").text("パー");
+// // $("#result").text("あいこだからコインなし");
+
+// // } else if(randomNumber===6){
+// // $("#Jack").text("パー");
+// // $("#Ann").text("グー");
+// // $("#result").text("Jackの勝ちだからJackがコインGet！");
+
+
+// // } else if(randomNumber===7){
+// // $("#Jack").text("パー");
+// // $("#Ann").text("チョキ");
+// // $("#result").text("あいこだからコインなし");
+
+// // } else if(randomNumber===8){
+// // $("#Jack").text("パー");
+// // $("#Ann").text("パー");
+// // $("#result").text("あなたの負けだからコインなし");
+
+// // }
+
+// // グーボタンのジャンケンパートここまで
+// // グーボタンコイン加算パートつくる
+
+// // const resultmap ={
+// // 0:{jack:"グー", ann:"グー", winner:null},
+// // 1: { jack: "グー", ann: "チョキ", winner: null },
+// // 2: { jack: "グー", ann: "パー", winner: "ann" },
+// // 3: { jack: "チョキ", ann: "グー", winner: null },
+// // 4: { jack: "チョキ", ann: "チョキ", winner: "user" },
+// // 5: { jack: "チョキ", ann: "パー", winner: null },
+// // 6: { jack: "パー", ann: "グー", winner: "jack" },
+// // 7: { jack: "パー", ann: "チョキ", winner: null },
+// // 8: { jack: "パー", ann: "パー", winner: null }
+
+
+// // };
+
+// // const result = resultMap[randomNumber];
+// // console.log("勝敗データ",result);
+
+// // $("#Jack").text(result.jack);
+// // $("#Ann").text(result.ann);
+
+
+
+// })
+
+
+
+
+// // チョキのボタンを押したときの挙動を書く。
+// // 11から19のランダムな数を作る
+
+// $("#Cbutton").on("click",function(){
+//   // ランダム数字つくる
+//   const randomNumber = Math.floor (Math.random()*(19-11+1))+11;
+//   console.log(randomNumber);
+
+//   if (randomNumber=== 11)
+//   {
+// $("#Jack").text("グー");
+// $("#Ann").text("グー");
+// $("#result").text("二人勝ち!コインなし");
+
+// } else if(randomNumber===12){
+// $("#Jack").text("グー");
+// $("#Ann").text("チョキ");
+// $("#result").text("Jackの勝ち!JackがコインGet");
+
+// }else if(randomNumber===13){
+// $("#Jack").text("グー");
+// $("#Ann").text("パー");
+// $("#result").text("あいこ　コインなし");
+
+// }else if(randomNumber===14){
+// $("#Jack").text("チョキ");
+// $("#Ann").text("グー");
+// $("#result").text("Annの勝ち!AnnがコインGet");
+
+// } else if(randomNumber===15){
+// $("#Jack").text("チョキ");
+// $("#Ann").text("チョキ");
+// $("#result").text("あいこ　コインなし");
+
+// } else if(randomNumber===16){
+// $("#Jack").text("チョキ");
+// $("#Ann").text("パー");
+// $("#result").text("二人勝ち!コインなし");
+
+// } else if(randomNumber===17){
+// $("#Jack").text("パー");
+// $("#Ann").text("グー");
+// $("#result").text("あいこ　コインなし");
+
+
+// } else if(randomNumber===18){
+// $("#Jack").text("パー");
+// $("#Ann").text("チョキ");
+// $("#result").text("あなただけ負け　コインなし");
+
+// } else if(randomNumber===19){
+// $("#Jack").text("パー");
+// $("#Ann").text("パー");
+// $("#result").text("あなたの勝ち!コインGet!");
+
+// }
+
+// })
+
+// // パーのボタンを押したときの挙動
+// // 21から29の乱数を使う
+
+// $("#Pbutton").on("click",function(){
+//   // ランダム数字つくる
+//   const randomNumber = Math.floor (Math.random()*(29-21+1))+21;
+//   console.log(randomNumber);
+
+//   if (randomNumber=== 21)
+//   {
+// $("#Jack").text("グー");
+// $("#Ann").text("グー");
+// $("#result").text("あなたの勝ち!コインGet");
+
+// } else if(randomNumber===22){
+// $("#Jack").text("グー");
+// $("#Ann").text("チョキ");
+// $("#result").text("あいこ　コインなし");
+
+// }else if(randomNumber===23){
+// $("#Jack").text("グー");
+// $("#Ann").text("パー");
+// $("#result").text("二人勝ち　コインなし");
+
+// }else if(randomNumber===24){
+// $("#Jack").text("チョキ");
+// $("#Ann").text("グー");
+// $("#result").text("あいこ　コインなし");
+
+// } else if(randomNumber===25){
+// $("#Jack").text("チョキ");
+// $("#Ann").text("チョキ");
+// $("#result").text("あなただけ負け　コインなし");
+
+// } else if(randomNumber===26){
+// $("#Jack").text("チョキ");
+// $("#Ann").text("パー");
+// $("#result").text("Jackの勝ち!JackがコインGet");
+
+// } else if(randomNumber===27){
+// $("#Jack").text("パー");
+// $("#Ann").text("グー");
+// $("#result").text("二人勝ち　コインなし");
+
+
+// } else if(randomNumber===28){
+// $("#Jack").text("パー");
+// $("#Ann").text("チョキ");
+// $("#result").text("Annの勝ち　AnnがコインGet");
+
+// } else if(randomNumber===29){
+// $("#Jack").text("パー");
+// $("#Ann").text("パー");
+// $("#result").text("あいこ　コインなし");
+
+// }
+
+// }) -->
+
+
+
+
+
+
+
+
+
+</html>
