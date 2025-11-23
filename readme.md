@@ -42,7 +42,6 @@ https://aratabplp-boop.github.io/Janken-app/
 
 
 
-```markdown
 ![キャプチャ画像](capture/じゃんけんコインバトルフルスクリーン.png)
 
 
