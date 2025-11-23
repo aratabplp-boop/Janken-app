@@ -39,9 +39,4 @@ https://aratabplp-boop.github.io/Janken-app/
 ‐ 2連勝総どりは結構ギャンブル感でるかな、と思ったが、それほどドキドキしない。
 　もっとドキドキする＆シンプルなゲームを考えたい
 
-
-
-
-![キャプチャ画像](capture/じゃんけんコインバトルフルスクリーン.png)
-
-
+![スクリーンショット](capture/Screenshot.png)
