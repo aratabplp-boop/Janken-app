@@ -1,4 +1,4 @@
-```markdown
+
 # ①課題名
 じゃんけんアプリ
 
@@ -39,5 +39,7 @@ https://aratabplp-boop.github.io/Janken-app/
 ‐ 2連勝総どりは結構ギャンブル感でるかな、と思ったが、それほどドキドキしない。
 　もっとドキドキする＆シンプルなゲームを考えたい
 
-![スクリーンショット](./capture/Screenshot.png?raw=true)
+
+## スクリーンショット
+![スクリーンショット](./capture/Screenshot.png)
 
